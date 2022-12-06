@@ -1,0 +1,7 @@
+****Project start***
+https://appdividend.com/2022/03/12/react-bootstrap-modal/ ai site theke darona niea project turi
+
+1. npx create-react-app reactjsbootstrapmodal
+npm i bootstarp@5.00
+npm i reactstrap
+npm i axios

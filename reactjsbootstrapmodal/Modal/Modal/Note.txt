@@ -1,0 +1,3 @@
+npx create-react-app reactjsbootstrapmodal
+npm i bootstrap@5.00
+npm i reactstrap
