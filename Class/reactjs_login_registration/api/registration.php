@@ -1,9 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: access");
-header("Access-Control-Allow-Methods: POST");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 
 include("db_connect.php");
 $data = file_get_contents("php://input");
@@ -18,13 +14,13 @@ if (($data->fname) && ($data->fname != '')) {
     $result = mysqli_query($db_conn, "SELECT * FROM registration WHERE email = '$email'");
 
     if (mysqli_num_rows($result) > 0) {
-        echo json_encode("Try with different email address");
+        echo json_encode(["duplicate" => "Try with different email address"]);
     } else {
         mysqli_query($db_conn, "INSERT INTO registration (fname,lname,email, password) VALUES ('$fname','$lname','$email','$password')");
         if (mysqli_affected_rows($db_conn) > 0) {
-            echo json_encode("Registration completed");
+            echo json_encode(["success" => "Registration completed"]);
         }
     }
 } else {
-    echo json_encode("All data must be filled");
+    echo json_encode(["empty" => "All Data must be filled"]);
 }

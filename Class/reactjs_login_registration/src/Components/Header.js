@@ -1,7 +1,12 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 export default function Header() {
+  let navigate = useNavigate();
+  const logOut = () => {
+    sessionStorage.clear();
+    navigate("/login");
+  };
   return (
     <>
       <div className="p-5 bg-primary text-white text-center">
@@ -28,8 +33,13 @@ export default function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">
-                Disabled
+              <Link className="nav-link " to="/dashboard">
+                DashBoard
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" onClick={logOut} href="#">
+                LogOut
               </a>
             </li>
           </ul>
